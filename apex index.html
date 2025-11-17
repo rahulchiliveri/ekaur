@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Apex Furnishings Pvt. Ltd. — Marketing & Digital Growth</title>
+  <meta name="description" content="Analytics & tracking support landing page for Apex Furnishings Pvt. Ltd. — New analytics setup and tracking support (Marketing & Digital Growth).">
+  <style>
+    :root{--bg:#f6f8fa;--card:#ffffff;--accent:#0b6efd;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;background:var(--bg);color:#111}
+    .container{max-width:1100px;margin:36px auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,#e6f0ff,#eaf7ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:22px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(12,15,25,0.04)}
+
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .section-title h2{font-size:16px;margin:0}
+    .small{font-size:13px;color:var(--muted)}
+
+    .sample-code{background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;font-family:monospace;font-size:13px;overflow:auto}
+
+    label{display:block;font-weight:600;margin-top:12px;font-size:13px}
+    input,select,textarea{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px;margin-top:6px;font-size:14px}
+    textarea{min-height:110px}
+    .btn{display:inline-block;padding:10px 14px;background:var(--accent);color:#fff;border-radius:8px;border:0;cursor:pointer;margin-top:12px}
+
+    ul.checklist{padding-left:18px;margin:8px 0;color:var(--muted)}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">AF</div>
+    <div>
+      <h1>Apex Furnishings Pvt. Ltd. — Analytics & Tracking</h1>
+      <p class="lead">Department: Marketing & Digital Growth — Issue: New Analytics Setup & Tracking Support</p>
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- MAIN COLUMN -->
+    <div>
+      <div class="card">
+        <div class="section-title">
+          <h2>Overview</h2>
+          <span class="small">Prepared for new analytics setup</span>
+        </div>
+        <p class="small">This single-file demo contains:
+          <ul class="checklist">
+            <li>Placeholders for GTM & GA4 snippets.</li>
+            <li>Example dataLayer pushes for page view, form submit and product interactions.</li>
+            <li>Sample event tracking (clicks, CTA, form submits).</li>
+            <li>Checklist for deploying tracking and QA steps.</li>
+          </ul>
+        </p>
+
+        <div style="margin-top:12px">
+          <label>GTM Container ID</label>
+          <input id="gtmId" placeholder="GTM-XXXXXXX">
+
+          <label>GA4 Measurement ID</label>
+          <input id="ga4Id" placeholder="G-XXXXXXXXXX">
+
+          <label>Site Environment</label>
+          <select id="env">
+            <option value="staging">Staging</option>
+            <option value="production">Production</option>
+          </select>
+
+          <button class="btn" onclick="generateSnippets()">Generate tracking snippets</button>
+        </div>
+
+        <hr style="margin:18px 0;border:none;border-top:1px solid #eef2f6">
+
+        <div>
+          <h3 style="margin:0 0 8px 0">Generated Snippets (preview)</h3>
+          <div class="sample-code" id="snippetPreview">Click "Generate tracking snippets" to preview GTM + GA4 placeholders and sample dataLayer events.</div>
+        </div>
+
+        <hr style="margin:18px 0;border:none;border-top:1px solid #eef2f6">
+
+        <div>
+          <h3 style="margin:0 0 8px 0">Tracking Examples</h3>
+          <p class="small">Below are JS examples you can deploy inside your templates or add to a sitewide script. They push structured events to the dataLayer for Tag Manager to pick up.</p>
+
+<pre class="sample-code">// Page view (send on page load)
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: 'page_view',
+  page_path: location.pathname,
+  page_title: document.title,
+  site_section: 'marketing'
+});
+
+// CTA click example
+function trackCTAClick(label){
+  window.dataLayer.push({
+    event: 'cta_click',
+    cta_label: label,
+    page_path: location.pathname
+  });
+}
+
+// Form submit example (call after successful submit)
+function trackFormSubmit(formName, success){
+  window.dataLayer.push({
+    event: 'form_submit',
+    form_name: formName,
+    form_success: !!success
+  });
+}
+
+// E-commerce product view example
+function trackProductView(product){
+  window.dataLayer.push({
+    event: 'view_item',
+    ecommerce: {items: [product]}
+  });
+}
+</pre>
+
+        </div>
+
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="section-title"><h2>Implementation & QA Checklist</h2><span class="small">Copy these into your deployment checklist</span></div>
+        <ul class="checklist">
+          <li>Install GTM container snippet on all pages (head + body).</li>
+          <li>Install GA4 via GTM (use Measurement ID in GA4 tag or use gtag if preferred).</li>
+          <li>Verify dataLayer pushes appear in preview mode for each event type.</li>
+          <li>Test key conversion events: contact form, phone click, brochure download, product view, add-to-cart.</li>
+          <li>Set up appropriate GA4 events & conversions via GTM or directly in GA4.</li>
+          <li>Test cross-domain and referral exclusions if using external payment or partner flows.</li>
+          <li>Document event naming, parameters and owner for each event.</li>
+          <li>Confirm data retention and user-ID strategy with legal/privacy team.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="card">
+        <div class="section-title"><h2>Quick Actions</h2><span class="small">Copy & paste helpers</span></div>
+
+        <label>Contact</label>
+        <p class="small">Marketing & Digital Growth — Apex Furnishings Pvt. Ltd.<br>Email: marketing@apexfurnishings.example<br>Owner: Analytics Team</p>
+
+        <label>Common events</label>
+        <p class="small">page_view, cta_click, form_submit, view_item, add_to_cart, purchase</p>
+
+        <label>Example dataLayer push</label>
+        <div class="sample-code">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({event:'contact_form',form_type:'marketing_inquiry',form_id:'lead-01'});</div>
+
+        <label>Minimal GTM head snippet</label>
+        <div class="sample-code" id="gtmHeadPreview">&lt;!-- GTM script will appear here once you generate --&gt;</div>
+
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 style="margin:0 0 8px 0">Notes for Engineers</h3>
+        <p class="small">Place the head GTM script as high as possible in &lt;head&gt;. Place the no-script iframe immediately after &lt;body&gt; opening tag for best coverage. Use consistent event names and parameter keys across pages for accurate reporting.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <small>Generated for: Apex Furnishings Pvt. Ltd. — Issue: New Analytics Setup & Tracking Support</small>
+  </footer>
+</div>
+
+<script>
+  function generateSnippets(){
+    var gtm = document.getElementById('gtmId').value.trim() || 'GTM-XXXXXXX';
+    var ga4 = document.getElementById('ga4Id').value.trim() || 'G-XXXXXXXXXX';
+    var env = document.getElementById('env').value;
+
+    var head = `<!-- Google Tag Manager (head) -->\n<script>window.dataLayer = window.dataLayer || []; window.dataLayer.push({site_env: '${env}'});</script>\n<script async src="https://www.googletagmanager.com/gtm.js?id=${gtm}"></script>\n<!-- /GTM -->`;
+
+    var bodyNoScript = `<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${gtm}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- /GTM -->`;
+
+    var ga4Snippet = `<!-- GA4 via gtag (example) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4}"></script>\n<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ga4}');</script>`;
+
+    var combined = head + "\n\n" + bodyNoScript + "\n\n" + ga4Snippet + "\n\n/* SAMPLE dataLayer pushes (place in site scripts where relevant) */\n" +
+      "window.dataLayer.push({event: 'page_view', page_path: location.pathname});\n" +
+      "window.dataLayer.push({event: 'form_submit', form_name: 'Contact - Marketing', form_success: true});\n";
+
+    document.getElementById('snippetPreview').textContent = combined;
+    document.getElementById('gtmHeadPreview').textContent = head;
+  }
+
+  // Example: wire CTA buttons (for demo only)
+  document.addEventListener('click', function(e){
+    var target = e.target.closest('[data-track-cta]');
+    if(target){
+      var label = target.getAttribute('data-track-cta') || target.innerText || 'cta';
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event:'cta_click', cta_label: label, page_path: location.pathname});
+    }
+  });
+
+  // Expose helper functions to window for dev console testing
+  window.trackCTAClick = function(label){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({event:'cta_click', cta_label: label}); };
+  window.trackFormSubmit = function(name, success){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({event:'form_submit', form_name:name, form_success: !!success}); };
+</script>
+</body>
+</html>
